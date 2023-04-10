@@ -5,9 +5,25 @@ import streamlit as st
 def main():
     
     st.title("Loan repayment schedule Genration")
-    Loan=int(st.number_input("**Loan Amount**"))
-    Interest=float(st.number_input("**Rate of Interest**"))
-    Tenor=int(st.number_input("**Number of months**"))
+    Loan=st.text_input("**Loan Amount**")
+    Interest=st.text_input("**Rate of Interest**")
+    Tenor=st.text_input("**Number of months**")
+    
+    if Loan == "":
+        print("You did not enter a number.")
+    else:
+        Loan = int(Loan)
+    
+    if Interest == "":
+        print("You did not enter a number.")
+    else:
+        Interest = float(Interest)
+    
+    if Tenor == "":
+        print("You did not enter a number.")
+    else:
+        Tenor = int(Tenor)
+    
     result=""
     genrate=st.button("Genrate Repayment Schedule")
     if genrate:
