@@ -4,10 +4,10 @@ import streamlit as st
 
 def main():
     
-    st.title("Welcome to Loan repayment schedule Genration")
-    Loan=st.text_input("Loan amount")
-    Interest=st.text_input("Rate of Interest")
-    Tenor=st.text_input("Number of months")
+    st.title("Loan repayment schedule Genration")
+    Loan=int(st.number_input("**Loan Amount**"))
+    Interest=float(st.number_input("**Rate of Interest**"))
+    Tenor=int(st.number_input("**Number of months**"))
     result=""
     genrate=st.button("Genrate Repayment Schedule")
     if genrate:
@@ -32,7 +32,9 @@ def main():
         df['Principal Payment'] = df['Principal Payment'].astype('int64')
         df['Interest Payment'] = df['Interest Payment'].astype('int64')
         df['Installment Amount'] = df['Installment Amount'].astype('int64')
- 
+
+        st.subheader("Your Estimated Loan Repayment Scheule")
+        
         st.write("Total Interest Payment  : ",(f"{df['Interest Payment'].sum():.2f}"))
         st.write("Monthly Installment Payment : ",round((monthly_payment),2))
         
