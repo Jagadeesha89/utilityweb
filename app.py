@@ -4,7 +4,7 @@ import streamlit as st
 
 def main():
     
-    st.title("Loan repayment schedule Genration")
+    st.title("Welcome to Loan EMI Calculator")
     Loan=st.text_input("**Loan Amount**")
     Interest=st.text_input("**Rate of Interest**")
     Tenor=st.text_input("**Number of months**")
@@ -49,17 +49,20 @@ def main():
         df['Interest Payment'] = df['Interest Payment'].astype('int64')
         df['Installment Amount'] = df['Installment Amount'].astype('int64')
 
+        
+        st.subheader("Your Loan EMI Calculation Summary")
+        
+        st.write("***Your Loan Amount:***","Rs.",(f"{Loan}"),"/-")
+        st.write("***Rate of Interest:***",(f"{Interest:.2f}"),"%")
+        st.write("***Total Tenor :***",(f"{Tenor}"),"Months")
+        st.write("***Total Interest Payable  :***","Rs.",(f"{df['Interest Payment'].sum()}"),"/-")
+        st.write("***Monthly Installment :***","Rs.",(f"{round(monthly_payment)}"),"/-")
+        
         st.subheader("Your Estimated Loan Repayment Scheule")
-        
-        st.write("Total Interest Payment  : ",(f"{df['Interest Payment'].sum():.2f}"))
-        st.write("Monthly Installment Payment : ",round((monthly_payment),2))
-        
- 
-        
-        
+         
         result=st.dataframe(df)
         st.success(result)
-        
+        st.balloons()
         
 if __name__=='__main__':
     main()
