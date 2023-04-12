@@ -58,7 +58,7 @@ def main():
         st.write("***Total Interest Payable  :***","Rs.",(f"{df['Interest Payment'].sum()}"),"/-")
         st.write("***Monthly Installment :***","Rs.",(f"{round(monthly_payment)}"),"/-")
         
-        st.subheader("Your Estimated Loan Repayment Scheule")
+        st.subheader("Your Estimated Loan Repayment Schedule")
          
         result=st.dataframe(df)
         st.success(result)
