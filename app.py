@@ -6,7 +6,7 @@ def main():
     
     st.title("Welcome to Loan EMI Calculator")
     Loan=st.text_input("**Loan Amount**")
-    Interest=st.text_input("**Rate of Interest**")
+    Interest=st.text_input("**Enter Rate of Interest (without %)**")
     Tenor=st.text_input("**Number of months**")
     
     if Loan == "":
