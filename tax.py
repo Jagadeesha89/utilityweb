@@ -96,7 +96,7 @@ def main():
         st.subheader("Your Tax Calculation Suammary")
     
         st.write("***Your tax amount on Old Tax Regim:***", "Rs.",(f"{final_old_tax_1:.2f}"),"/-")
-        st.write("***your tax amount on New Tax Regim:***", "Rs.",(f"{final_new_tax_1:.2f}"),"/-")
+        st.write("***Your tax amount on New Tax Regim:***", "Rs.",(f"{final_new_tax_1:.2f}"),"/-")
 
 
         
