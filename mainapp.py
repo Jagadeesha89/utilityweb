@@ -103,8 +103,8 @@ def tax_cal():
         st.subheader("Your Tax Calculation Suammary")
         
         df=pd.DataFrame({"Particulars":['Total Taxable Income','Total Dedcutions','Standard Deduction','Final Taxable incme','Tax Amount before Cess','Cess (%)','Final Tax Amount'],
-                         "New Tax Regim":[income,0,stan_dedcu,n_tax,new_tax,"4%",final_new_tax_1],
-                         "Old Tax Regim":[income,deduction,stan_dedcu,b_tax,old_tax,"4%",final_old_tax_1]})
+                         "New Tax Regim":[income,0,stan_dedcu,n_tax,new_tax,"4",final_new_tax_1],
+                         "Old Tax Regim":[income,deduction,stan_dedcu,b_tax,old_tax,"4",final_old_tax_1]})
         
         st.table(df)
         
@@ -115,6 +115,7 @@ def tax_cal():
         else:
  
            st.write("***New Tax Regim higher higher tax laiblity","," "if you opted for Old Tax Regim you will save Rs.***",(f"{b}"),"/-")
+           
            
 def loan_repay():
     
@@ -176,7 +177,11 @@ def loan_repay():
          
         st.dataframe(df)
 
+if __name__=='__tax_cal__':
+    tax_cal()
 
+if __name__=='__loan_repay__':
+    loan_repay() 
 
 if page == "EMI Calculator":
     loan_repay()
