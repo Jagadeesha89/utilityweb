@@ -5,7 +5,7 @@ import streamlit as st
 
 
 
-def main():
+def tax_cal():
     st.title("Welcome to Tax Calculator")
     income=st.text_input("Total taxable income (Rs)")
     ded_1=st.text_input("Deduction under 80c")
@@ -23,14 +23,16 @@ def main():
         ded_1 = int(ded_1)
     
     if ded_2 == "":
-        print("You did not enter a number.")
+        print ("You did not enter a number.")
     else:
         ded_2 = int(ded_2)
     
     if ded_3 == "":
-        print("You did not enter a number.")
+        print ("You did not enter a number.")
     else:
         ded_3=int(ded_3)
+    
+    st.write("*If deduction & exemptions is nil please enter zero*")    
     
     def old_tax_cal(income_1):
         if income_1 <= 500000:
@@ -87,21 +89,32 @@ def main():
         else:
             new_tax=int(new_tax)
             
+        b_tax=income-stan_dedcu-deduction
+        n_tax=income-stan_dedcu
+            
         final_old_tax=(old_tax * 0.04) 
         final_new_tax=(new_tax * 0.04) 
         
         final_old_tax_1=final_old_tax + old_tax
         final_new_tax_1=final_new_tax + new_tax
         
-        st.subheader("Your Tax Calculation Suammary")
-    
-        st.write("***Your tax amount on Old Tax Regim:***", "Rs.",(f"{final_old_tax_1:.2f}"),"/-")
-        st.write("***Your tax amount on New Tax Regim:***", "Rs.",(f"{final_new_tax_1:.2f}"),"/-")
-
-
+        a=final_old_tax_1 - final_new_tax_1
+        b=final_new_tax_1 - final_old_tax_1
         
+        st.subheader("Your Tax Calculation Suammary")
+        
+        df=pd.DataFrame({"Particulars":['Total Taxable Income','Total Dedcutions','Standard Deduction','Final Taxable incme','Tax Amount before Cess','Cess (%)','Final Tax Amount'],
+                         "New Tax Regim":[income,"No Deduction",stan_dedcu,n_tax,new_tax,"4%",final_new_tax_1],
+                         "Old Tax Regim":[income,deduction,stan_dedcu,b_tax,old_tax,"4%",final_old_tax_1]})
+        
+        st.table(df)
+        
+       
+        
+        if final_old_tax_1 > final_new_tax_1:
+           st.write ("***Old Tax Regim having higher tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
+        else:
+            st.write("***New Tax Regim higher higher tax laiblity","," "if you opted for Old Tax Regim you will save Rs.***",(f"{b}"),"/-")
     
-if __name__=='__main__':
-    main()
-    
-
+if __name__=='__tax_cal__':
+    tax_cal()

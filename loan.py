@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
-def main():
+def loan_repay():
     
     st.title("Welcome to Loan EMI Calculator")
     Loan=st.text_input("**Loan Amount**")
@@ -60,11 +60,8 @@ def main():
         
         st.subheader("Your Estimated Loan Repayment Schedule")
          
-        result=st.dataframe(df)
-        st.success(result)
-        st.balloons()
+        st.dataframe(df)
         
-if __name__=='__main__':
-    main()
-    
-    
+        
+if __name__=='__loan_repay__':
+    loan_repay()
