@@ -7,10 +7,10 @@ import streamlit as st
 
 def tax_cal():
     st.title("Welcome to Tax Calculator")
-    income=st.text_input("Total taxable income (Rs)")
-    ded_1=st.text_input("Deduction under 80c")
-    ded_2=st.text_input("Interest on Home Loan")
-    ded_3=st.text_input("Any other exemptions and deduction")
+    income=st.text_input("**Total taxable income (Rs)**")
+    ded_1=st.text_input("**Deduction under 80c**")
+    ded_2=st.text_input("**Interest on Home Loan**")
+    ded_3=st.text_input("**Any other exemptions and deduction**")
     
     if income == "":
         print("You did not enter a number.")
