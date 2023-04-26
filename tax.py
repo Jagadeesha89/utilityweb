@@ -104,7 +104,7 @@ def tax_cal():
         st.subheader("Your Tax Calculation Suammary")
         
         df=pd.DataFrame({"Particulars":['Total Taxable Income','Total Dedcutions','Standard Deduction','Final Taxable incme','Tax Amount before Cess','Cess (%)','Final Tax Amount'],
-                         "New Tax Regim":[income,"No Deduction",stan_dedcu,n_tax,new_tax,"4%",final_new_tax_1],
+                         "New Tax Regim":[income,0,stan_dedcu,n_tax,new_tax,"4%",final_new_tax_1],
                          "Old Tax Regim":[income,deduction,stan_dedcu,b_tax,old_tax,"4%",final_old_tax_1]})
         
         st.table(df)
