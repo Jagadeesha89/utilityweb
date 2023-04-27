@@ -7,7 +7,7 @@ page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator"
 
 def main():
     def tax_cal():
-        st.title("Welcome to Tax Calculator")
+        st.title("Tax Calculator")
         income=st.text_input("**Total Income (Rs)**")
         ded_1=st.text_input("**Deduction under 80c**")
         ded_2=st.text_input("**Interest on Home Loan**")
@@ -125,7 +125,7 @@ def main():
            
     def loan_repay():
     
-        st.title("Welcome to Loan EMI Calculator")
+        st.title("Loan EMI Calculator")
         Loan=st.text_input("**Loan Amount**")
         Interest=st.text_input("**Enter Rate of Interest (without %)**")
         Tenor=st.text_input("**Number of months**")
