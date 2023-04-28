@@ -34,7 +34,7 @@ def main():
         else:
             ded_3=int(ded_3)
     
-        st.write("*If deduction & exemptions is nil please enter zero*")    
+            
     
         def old_tax_cal(income_1):
             if income_1 <= 500000:
