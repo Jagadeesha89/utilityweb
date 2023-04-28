@@ -5,6 +5,7 @@ import numpy as np
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator"))
 
+@st.cache
 def main():
     def tax_cal():
         st.title("Tax Calculator")
@@ -116,7 +117,7 @@ def main():
        
         
             if final_old_tax_1 > final_new_tax_1:
-                st.write ("***Old Tax Regim having higher tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
+                st.write ("***Old Tax Regim having tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
             elif final_old_tax_1 == final_new_tax_1:
                 st.write("***Old Tax Regim and New Tax Regim having same tax laiblity","," "You can opt for any regim depend on the Deduction***")
             else:
