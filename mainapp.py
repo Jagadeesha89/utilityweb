@@ -114,6 +114,7 @@ def main():
     
         
             st.table(df)
+            st.download_button('Download Camparision', df)
         
        
         
@@ -184,6 +185,7 @@ def main():
             st.subheader("Your Estimated Loan Repayment Schedule")
          
             st.dataframe(df)
+            st.download_button('Download Repayment Schedule', df)
             
             
     if page == "Select":
