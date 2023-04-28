@@ -10,9 +10,9 @@ def main():
     def tax_cal():
         st.title("Tax Calculator")
         income=st.text_input("**Total Income (Rs)**")
-        ded_1=st.text_input("**Deduction under 80c**")
-        ded_2=st.text_input("**Interest on Home Loan**")
-        ded_3=st.text_input("**Any other exemptions and deduction**")
+        ded_1=st.text_input("**Deduction under 80c**",0)
+        ded_2=st.text_input("**Interest on Home Loan**",0)
+        ded_3=st.text_input("**Any other exemptions and deduction**",0)
     
         if income == "":
             print ("You did not enter a number.")
