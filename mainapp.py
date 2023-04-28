@@ -5,7 +5,7 @@ import numpy as np
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator"))
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def main():
     def tax_cal():
         st.title("Tax Calculator")
