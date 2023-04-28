@@ -184,12 +184,12 @@ def main():
          
             st.dataframe(df)
         
-        if page == "Select":
-            st.write("Please select the services")
-        elif page == "EMI Calculator":
-            loan_repay()
-        else:
-            tax_cal()
+            if page == "Select":
+                st.write("Please select the services")
+            elif page == "EMI Calculator":
+                loan_repay()
+            else:
+                tax_cal()
        
 if __name__=='__main__':
     main()
