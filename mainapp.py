@@ -125,7 +125,7 @@ def main():
             else:
                 st.write("***New Tax Regim having higher tax laiblity","," "if you opted for Old Tax Regim you will save Rs.***",(f"{b}"),"/-")
            
-        st.download_button('Download Camparision', df)
+       
            
     def loan_repay():
     
@@ -186,7 +186,7 @@ def main():
             st.subheader("Your Estimated Loan Repayment Schedule")
          
             st.dataframe(df)
-    st.download_button('Download Repayment Schedule', df)
+    
             
             
     if page == "Select":
