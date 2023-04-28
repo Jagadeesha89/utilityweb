@@ -2,6 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+[theme]
+
+primaryColor="#d33682"
+backgroundColor="#002b36"
+secondaryBackgroundColor="#586e75"
+textColor="#fafafa"
+font="sans serif"
+
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator"))
 
