@@ -5,7 +5,7 @@ import numpy as np
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator"))
 
-@st.cache(suppress_st_warning=True)
+@st.cache
 def main():
     def tax_cal():
         st.title("Tax Calculator")
@@ -184,12 +184,12 @@ def main():
          
             st.dataframe(df)
         
-    if page == "Select":
-        st.write("Please select the services")
-    elif page == "EMI Calculator":
-        loan_repay()
-    else:
-        tax_cal()
+        if page == "Select":
+            st.write("Please select the services")
+        elif page == "EMI Calculator":
+            loan_repay()
+        else:
+            tax_cal()
        
 if __name__=='__main__':
     main()
