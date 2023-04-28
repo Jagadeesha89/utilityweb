@@ -117,11 +117,11 @@ def main():
        
         
             if final_old_tax_1 > final_new_tax_1:
-                st.write ("***Old Tax Regim having tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
+                st.write ("***Old Tax Regim having higher tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
             elif final_old_tax_1 == final_new_tax_1:
                 st.write("***Old Tax Regim and New Tax Regim having same tax laiblity","," "You can opt for any regim depend on the Deduction***")
             else:
-                st.write("***New Tax Regim higher higher tax laiblity","," "if you opted for Old Tax Regim you will save Rs.***",(f"{b}"),"/-")
+                st.write("***New Tax Regim having higher tax laiblity","," "if you opted for Old Tax Regim you will save Rs.***",(f"{b}"),"/-")
            
            
     def loan_repay():
