@@ -206,10 +206,11 @@ def main():
 
         # User input
         ## Function for taking user provided prompt as input
+        st.write("This is AI powered chatbot, this may produce inacurate data")
         def get_text():
              input_text = st.text_input("You: ", "", key="input")
              return input_text
-        st.write("This is AI powered chatbot, this may produce inacurate data")
+        
         ## Applying the user input box
         with input_container:
              user_input = get_text()
