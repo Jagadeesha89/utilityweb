@@ -193,7 +193,13 @@ def main():
             
     def chatbot():
         st.write("This is AI powered chatbot, this may produce inacurate data")
-     
+        genrate=st.button("Genrate Response")
+        genrate=st.session_state['generated']
+         if 'generated' not in st.session_state:
+            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+        ## past stores User's questions
+        if 'past' not in st.session_state:
+            st.session_state['past'] = ['Hi!']
 
         # Layout of input/response containers
         input_container = st.container()
