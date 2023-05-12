@@ -192,7 +192,9 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        st.write("This is AI powered chatbot, this may produce inacurate information about people, places, or facts")
+        st.title("AI powered Chat GPT")
+        st.write(" This is AI powered chatbot, this may produce inacurate information about people, places, or facts
+                 💡 Note: No API key required! ")
         
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
