@@ -192,7 +192,7 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        st.write("This is AI powered chatbot, this may produce inacurate data"
+        st.write("This is AI powered chatbot, this may produce inacurate data")
         
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
@@ -201,6 +201,7 @@ def main():
         ## past stores User's questions
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hi!']
+
 
        # Layout of input/response containers
         input_container = st.container()
