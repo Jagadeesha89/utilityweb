@@ -55,7 +55,7 @@ def main():
             return tax
 
         def new_tax_cal(income):
-            if income <750000:
+            if income <700000:
                 return 0
             elif income <=300000:
                 tax= 0
