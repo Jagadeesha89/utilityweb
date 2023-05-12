@@ -192,7 +192,7 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        
+        st.write("This is AI powered chatbot, this may produce inacurate data")
         if 'generated' not in st.session_state:
             st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
         ## past stores User's questions
@@ -206,7 +206,6 @@ def main():
 
         # User input
         ## Function for taking user provided prompt as input
-        st.write("This is AI powered chatbot, this may produce inacurate data")
         def get_text():
              input_text = st.text_input("You: ", "", key="input")
              return input_text
