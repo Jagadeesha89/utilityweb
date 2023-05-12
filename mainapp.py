@@ -197,7 +197,9 @@ def main():
          - This app is an LLM-powered chatbot built using,HugChat
          - This is AI powered chatbot, this may produce inacurate information about people, places, or facts
          - Limited knowledge of world and events after 2021
-          💡 Note: No API key required!
+         
+         
+         💡 Note: No API key required!
          ''')
         
         # Generate empty lists for generated and past.
