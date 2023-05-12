@@ -194,6 +194,18 @@ def main():
     def chatbot():
         st.write("This is AI powered chatbot, this may produce inacurate data")
         
+        genrate=st.button("Genrate Response")
+        if genrate:
+           st.session_state['generated']
+        
+        # Generate empty lists for generated and past.
+        ## generated stores AI generated responses
+        if 'generated' not in st.session_state:
+            st.session_state['generated'] = ["Your response is genrating....."]
+        ## past stores User's questions
+        if 'past' not in st.session_state:
+            st.session_state['past'] = ['Hi!']
+
         # Layout of input/response containers
         input_container = st.container()
         colored_header(label='', description='', color_name='blue-30')
@@ -208,22 +220,6 @@ def main():
         ## Applying the user input box
         with input_container:
              user_input = get_text()
-              
-        genrate=st.button("Genrate Response")
-        if genrate:
-           st.session_state['generated']
-        
-        # Generate empty lists for generated and past.
-        ## generated stores AI generated responses
-        if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["Your response is genrating....."]
-        ## past stores User's questions
-        if 'past' not in st.session_state:
-            st.session_state['past'] = ['Hi!']
-
-        
-
-       
 
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
