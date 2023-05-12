@@ -192,7 +192,7 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        st.write("This is AI powered chatbot, this may produce inacurate data")
+        
         if 'generated' not in st.session_state:
             st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
         ## past stores User's questions
@@ -231,7 +231,7 @@ def main():
                 for i in range(len(st.session_state['generated'])):
                     message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
                     message(st.session_state["generated"][i], key=str(i))
-            
+        st.write("This is AI powered chatbot, this may produce inacurate data")
             
     if page == "Select":
         st.write("Please select the services")
