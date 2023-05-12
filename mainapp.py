@@ -222,6 +222,7 @@ def main():
             return response
 
         ## Conditional display of AI generated responses as a function of user provided prompts
+        Genrate=st.button("Genrate Response")
         with response_container:
             if user_input:
                 response = generate_response(user_input)
