@@ -195,7 +195,7 @@ def main():
         st.title("AI powered Chat GPT")
         st.markdown('''
          - This app is an LLM-powered chatbot built using,HugChat
-         - This is AI powered chatbot, this may produce inacurate information about people, places, or facts
+         - This may produce inacurate information about people, places, or facts
          - Limited knowledge of world and events after 2021
          
          
@@ -219,7 +219,7 @@ def main():
         # User input
         ## Function for taking user provided prompt as input
         def get_text():
-            input_text = st.text_input("You: ", "enter your query", key="input")
+            input_text = st.text_input("You: ", " ", key="input")
             return input_text
         ## Applying the user input box
         with input_container:
