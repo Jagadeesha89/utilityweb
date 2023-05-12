@@ -192,6 +192,7 @@ def main():
             st.dataframe(df)
             
     def chatbot():
+        st.write("This is AI powered chatbot, this may produce inacurate data")
          # User input
         ## Function for taking user provided prompt as input
         def get_text():
@@ -201,10 +202,11 @@ def main():
         ## Applying the user input box
         with input_container:
              user_input = get_text()
-        st.write("This is AI powered chatbot, this may produce inacurate data")
+              
         genrate=st.button("Genrate Response")
         if genrate:
            st.session_state['generated']
+        
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
         if 'generated' not in st.session_state:
