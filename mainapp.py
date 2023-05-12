@@ -192,6 +192,15 @@ def main():
             st.dataframe(df)
             
     def chatbot():
+         # User input
+        ## Function for taking user provided prompt as input
+        def get_text():
+             input_text = st.text_input("You: ", "", key="input")
+             return input_text
+        
+        ## Applying the user input box
+        with input_container:
+             user_input = get_text()
         st.write("This is AI powered chatbot, this may produce inacurate data")
         genrate=st.button("Genrate Response")
         if genrate:
@@ -199,7 +208,7 @@ def main():
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
         if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+            st.session_state['generated'] = ["Your response is genrating....."]
         ## past stores User's questions
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hi!']
@@ -209,15 +218,7 @@ def main():
         colored_header(label='', description='', color_name='blue-30')
         response_container = st.container()
 
-        # User input
-        ## Function for taking user provided prompt as input
-        def get_text():
-             input_text = st.text_input("You: ", "", key="input")
-             return input_text
-        
-        ## Applying the user input box
-        with input_container:
-             user_input = get_text()
+       
 
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
