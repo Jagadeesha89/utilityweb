@@ -240,6 +240,7 @@ def main():
     elif page == "Tax Calculator":
         tax_cal()
     else:
+        chatbot()
         
   
 if __name__=='__main__':
