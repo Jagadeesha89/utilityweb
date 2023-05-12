@@ -209,6 +209,7 @@ def main():
         def get_text():
              input_text = st.text_input("You: ", "", key="input")
              return input_text
+        st.write("This is AI powered chatbot, this may produce inacurate data")
         ## Applying the user input box
         with input_container:
              user_input = get_text()
@@ -231,7 +232,7 @@ def main():
                 for i in range(len(st.session_state['generated'])):
                     message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
                     message(st.session_state["generated"][i], key=str(i))
-        st.write("This is AI powered chatbot, this may produce inacurate data")
+        
             
     if page == "Select":
         st.write("Please select the services")
