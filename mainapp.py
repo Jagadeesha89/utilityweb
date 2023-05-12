@@ -198,11 +198,11 @@ def main():
            st.session_state['generated']
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
-            if 'generated' not in st.session_state:
-                st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+        if 'generated' not in st.session_state:
+            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
         ## past stores User's questions
-            if 'past' not in st.session_state:
-                st.session_state['past'] = ['Hi!']
+        if 'past' not in st.session_state:
+            st.session_state['past'] = ['Hi!']
 
         # Layout of input/response containers
         input_container = st.container()
