@@ -192,7 +192,7 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
+        
         if 'generated' not in st.session_state:
             st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
         ## past stores User's questions
