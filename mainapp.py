@@ -193,6 +193,12 @@ def main():
             
     def chatbot():
         st.write("This is AI powered chatbot, this may produce inacurate data")
+        
+        # Layout of input/response containers
+        input_container = st.container()
+        colored_header(label='', description='', color_name='blue-30')
+        response_container = st.container()
+        
          # User input
         ## Function for taking user provided prompt as input
         def get_text():
@@ -215,10 +221,7 @@ def main():
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hi!']
 
-        # Layout of input/response containers
-        input_container = st.container()
-        colored_header(label='', description='', color_name='blue-30')
-        response_container = st.container()
+        
 
        
 
