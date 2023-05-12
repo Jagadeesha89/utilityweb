@@ -192,16 +192,12 @@ def main():
             st.dataframe(df)
             
     def chatbot():
-        st.write("This is AI powered chatbot, this may produce inacurate data")
-        
-        genrate=st.button("Genrate Response")
-        if genrate:
-           st.session_state['generated']=['genrated']
+        st.write("This is AI powered chatbot, this may produce inacurate data"
         
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
         if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["Your response is genrating....."]
+            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
         ## past stores User's questions
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hi!']
