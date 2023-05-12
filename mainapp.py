@@ -196,7 +196,7 @@ def main():
         
         genrate=st.button("Genrate Response")
         if genrate:
-           st.session_state['generated']
+           st.session_state['generated']=['genrated']
         
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
