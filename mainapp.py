@@ -209,9 +209,9 @@ def main():
             
         input_text = st.text_input("You:", "")
     
-        if input_text:
-            response =Bard().get_answer(input_text),max_length=1000, do_sample=True)[0]['generated_text']
-            st.write("AI:", response)
+        
+        response =Bard().get_answer(input_text),max_length=1000, do_sample=True)[0]['generated_text']
+        st.write("AI:", response)
         
         
         
