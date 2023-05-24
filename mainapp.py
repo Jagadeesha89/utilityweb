@@ -204,7 +204,7 @@ def main():
          💡 Note: No API key required!
          ''')
             
-        os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
+        
         input_text = st.text_input("You:","")
         response=(Bard().get_answer(input_text)['content'])
         st.write(response)
