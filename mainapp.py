@@ -205,8 +205,10 @@ def main():
          ''')
             
         os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
-        input_text = st.text_input("You:", "")
-        st.write(Bard().get_answer(input_text)['content'])
+        input_text = st.text_input("You:","")
+        response=(Bard().get_answer(input_text)['content'])
+        st.write(response)
+        
         
             
     if page == "Select":
