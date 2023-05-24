@@ -7,14 +7,9 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from bardapi import Bard
 import os
-from transformers import pipeline, BartTokenizer, BartForConditionalGeneration
-
-# Set up the Google BART pipeline for chat-based language models
-tokenizer = BartTokenizer.from_pretrained('facebook/bart-large')
-model = BartForConditionalGeneration.from_pretrained('facebook/bart-large')
-chat_pipeline = pipeline('text2text-generation', model=model, tokenizer=tokenizer)
 
 
+os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
 
 
 ti=st.title("Welcome to Utility Services")
@@ -215,7 +210,7 @@ def main():
         input_text = st.text_input("You:", "")
     
         if input_text:
-            response = chat_pipeline(input_text, max_length=100, do_sample=True)[0]['generated_text']
+            response =Bard().get_answer(input_text),max_length=1000, do_sample=True)[0]['generated_text']
             st.write("AI:", response)
         
         
