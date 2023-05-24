@@ -7,7 +7,6 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from bardapi import Bard
 import os
-from streamlit.elements import streamlit as avaliable_elements
 from pyngrok import ngrok
 from transformers import pipeline
 
