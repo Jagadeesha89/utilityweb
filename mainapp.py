@@ -7,6 +7,8 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from bardapi import Bard
 import os
+from transformers import pipeline
+
 
 
 ti=st.title("Welcome to Utility Services")
@@ -192,7 +194,7 @@ def main():
             st.subheader("Your Estimated Loan Repayment Schedule")
          
             st.dataframe(df)
-    os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."        
+        
     def chatbot():
         st.title("AI powered Chat GPT")
         st.markdown('''
@@ -205,9 +207,11 @@ def main():
          ''')
             
         
-        input_text = st.text_input("You:","")
-        response=(Bard().get_answer(input_text)['content'])
-        st.write(response)
+        input_text = st.text_input("You:", "")
+    
+        if input_text:
+        response = chat_pipeline(input_text)[0]['generated_text']
+        st.write("AI: " + response)
         
         
             
