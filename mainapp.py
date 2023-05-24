@@ -192,7 +192,7 @@ def main():
             st.subheader("Your Estimated Loan Repayment Schedule")
          
             st.dataframe(df)
-            
+    os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."        
     def chatbot():
         st.title("AI powered Chat GPT")
         st.markdown('''
