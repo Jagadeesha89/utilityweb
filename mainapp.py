@@ -208,9 +208,7 @@ def main():
          ''')
             
         input_text = st.text_input("You:", "")
-    
-        
-        response= Bard().get_answer(input_text)[0]['generated_text']
+        response= Bard().get_answer(input_text)['generated_text']
         st.write("AI:", response)
         
         
