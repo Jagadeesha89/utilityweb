@@ -5,6 +5,8 @@ from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
+from bardapi import Bard
+import os
 
 
 ti=st.title("Welcome to Utility Services")
@@ -201,7 +203,7 @@ def main():
          
          💡 Note: No API key required!
          ''')
-        
+            
         # Generate empty lists for generated and past.
         ## generated stores AI generated responses
         if 'generated' not in st.session_state:
@@ -209,8 +211,9 @@ def main():
         ## past stores User's questions
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hi!']
-
-
+            
+        os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
+        
        # Layout of input/response containers
         input_container = st.container()
         colored_header(label='', description='', color_name='blue-30')
@@ -228,8 +231,8 @@ def main():
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
         def generate_response(prompt):
-            chatbot = hugchat.ChatBot()
-            response = chatbot.chat(prompt)
+            chatbot = Bard()
+            response = Bard().get_answer(input_text)['content']
             return response
 
         ## Conditional display of AI generated responses as a function of user provided prompts
