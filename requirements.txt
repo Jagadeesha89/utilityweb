@@ -5,3 +5,5 @@ hugchat
 streamlit-chat
 streamlit-extras
 bardapi
+pyngrok
+transformers
