@@ -211,7 +211,7 @@ def main():
     
         if input_text:
             response = chat_pipeline(input_text)[0]['generated_text']
-            st.write("AI: " + response)
+        st.write("AI: " + response)
         
         
             
