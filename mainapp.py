@@ -7,8 +7,8 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from bardapi import Bard
 import os
-from transformers import pipeline
 
+os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
 
 
 ti=st.title("Welcome to Utility Services")
@@ -208,10 +208,9 @@ def main():
             
         
         input_text = st.text_input("You:", "")
-    
-        if input_text:
-            response = chat_pipeline(input_text)[0]['generated_text']
-        st.write("AI: " + response)
+        response = Bard().get_answer(input_text)['content']
+        st.write("AI",response)
+        
         
         
             
