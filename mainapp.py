@@ -7,8 +7,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from bardapi import Bard
 import os
-from pyngrok import ngrok
-from transformers import pipeline
+
 
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator","AI Powered Chat GPT"))
@@ -205,47 +204,9 @@ def main():
          💡 Note: No API key required!
          ''')
             
-        # Set up the Hugging Face pipeline for chat-based language models
-        chat_pipeline = pipeline("text2text-generation", model="microsoft/DialoGPT-medium")
-
-        # Generate empty lists for generated and past.
-        if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["I'm HugChat. How may I help you?"]
-
-        if 'past' not in st.session_state:
-            st.session_state['past'] = ['Hi!']
-
-        # Layout of input/response containers
-        input_container = st.container()
-        response_container = st.container()
-
-        # User input
-        ## Function for taking user provided prompt as input
-        def get_text():
-            input_text = st.text_input("You:", "", key="input")
-            return input_text
-
-        ## Applying the user input box
-        with input_container:
-            user_input = get_text()
-
-        # Response output
-        ## Function for taking user prompt as input followed by producing AI generated responses
-        def generate_response(prompt):
-            response = chat_pipeline([prompt])[0]['generated_text']
-            return response
-
-        ## Conditional display of AI generated responses as a function of user provided prompts
-        with response_container:
-            if user_input:
-                response = generate_response(user_input)
-                st.session_state.past.append(user_input)
-                st.session_state.generated.append(response)
-
-        if st.session_state['generated']:
-            for i in range(len(st.session_state['generated'])):
-                st.text_input("User:", value=st.session_state['past'][i], key=str(i) + '_user', disabled=True)
-                st.text_input("ChatGPT:", value=st.session_state["generated"][i], key=str(i), disabled=True)
+        os.environ['_BARD_API_KEY']="VwimMNWKNwiP3DeonLvkmsPtDAqQZ5J2Bsb7I7IdrxLaDDvXW_P4EHWHT3weGltEezfIfA."
+        input_text = st.text_input("You:", "", key="input")
+        st.write(Bard().get_answer(input_text)['content'])
         
             
     if page == "Select":
