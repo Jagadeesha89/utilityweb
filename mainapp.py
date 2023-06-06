@@ -222,7 +222,7 @@ def main():
         # User input
         ## Function for taking user provided prompt as input
         def get_text():
-            input_text = st.text_input("You: Enter your query", "", key="input" 💡)
+            input_text = st.text_input("You:", "", key="input")
             return input_text
             
         ## Applying the user input box
