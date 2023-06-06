@@ -3,6 +3,7 @@ from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
+from hugchat.login import Login
 
 st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
 
@@ -42,11 +43,18 @@ def get_text():
 ## Applying the user input box
 with input_container:
     user_input = get_text()
+# Log in to huggingface and grant authorization to huggingchat
+email="jaga.m.gowda@gmail.com"
+passwd="Jaga@9731"
+sign = Login(email, passwd)
+cookies = sign.login()
 
+# Save cookies to usercookies/<email>.json
+sign.saveCookies()
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
-    chatbot = hugchat.ChatBot()
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     response = chatbot.chat(prompt)
     return response
 
