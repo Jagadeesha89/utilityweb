@@ -6,7 +6,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
-import os
+
 
 
 
@@ -222,9 +222,9 @@ def main():
         # User input
         ## Function for taking user provided prompt as input
         def get_text():
-            input_text = st.text_input("You: ", "", key="input")
+            input_text = st.text_input("You: Enter your query ", "", key="input")
             return input_text
-            print('\033c', end='')
+            
         ## Applying the user input box
         with input_container:
             user_input = get_text()
