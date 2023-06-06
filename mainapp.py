@@ -224,7 +224,7 @@ def main():
         def get_text():
             input_text = st.text_input("You: ", "", key="input")
             return input_text
-        os.system("cls" if os.name == "nt" else "clear")
+            os.system("cls" if os.name == "nt" else "clear")
         ## Applying the user input box
         with input_container:
             user_input = get_text()
