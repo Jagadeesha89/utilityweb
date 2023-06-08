@@ -13,12 +13,14 @@ cookies = sign.login()
 
 # Save cookies to usercookies/<email>.json
 sign.saveCookies()
+
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     response = chatbot.chat(prompt)
     return response
+
 # Set the layout of the app
 st.layout = st.container()
 
