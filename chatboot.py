@@ -111,3 +111,42 @@ if user_input:
 st.text_area("User Prompt", value=user_input, height=100)
 
 https://chat.openai.com/share/94495184-6ce3-443d-b397-d94e74fabeb3
+    
+import streamlit as st
+import hug
+
+# Create a Hug chat instance
+chat = hug.Chat()
+
+# Define a function to generate the result
+def generate_result(text):
+  # Get the response from the chatbot
+  response = chat._get_response(text)
+
+  # Return the response
+  return response
+
+# Set the layout of the app
+st.layout = st.container()
+
+# Add a text input field
+text_input = st.text_input("Enter your message")
+
+# If the user enters a message, generate the result and display it
+if text_input:
+  # Get the user's query
+  query = text_input
+
+  # Generate the result
+  result = generate_result(query)
+
+  # Display the user's query, the result, and the conversation history
+  st.write("User query:", query)
+  st.write("Result:", result)
+  st.write("Conversation history:")
+  for message in chat._conversation_history:
+    st.write(message)
+
+  # Once the user clicks on enter, remove the query from the prompt box
+  st.text_input("Enter your message", key=None)
+
