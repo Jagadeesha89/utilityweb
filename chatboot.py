@@ -150,3 +150,26 @@ if text_input:
   # Once the user clicks on enter, remove the query from the prompt box
   st.text_input("Enter your message", key=None)
 
+  # Display the generated response in typewriter effect
+  st.write(result, unsafe_allow_html=True, key="generated_response")
+  st.markdown("""
+  <style>
+  #generated_response {
+  animation: typewriting 2s infinite;
+  }
+
+  @keyframes typewriting {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  </style>
+  """, unsafe_allow_html=True)
+
+
