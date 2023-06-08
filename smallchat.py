@@ -31,7 +31,7 @@ if text_input:
   query = text_input
 
   # Generate the result
-  result = generate_result(query)
+  result = generate_response(query)
 
   # Display the user's query, the result, and the conversation history
   st.write("User query:", query)
