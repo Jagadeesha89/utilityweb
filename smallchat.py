@@ -37,7 +37,7 @@ if text_input:
   st.write("User query:", query)
   st.write("Result:", result)
   st.write("Conversation history:")
-  for message in chat._conversation_history:
+  for message in response._conversation_history:
     st.write(message)
 
   # Once the user clicks on enter, remove the query from the prompt box
