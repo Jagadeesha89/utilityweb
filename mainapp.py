@@ -220,6 +220,8 @@ def main():
         response_container = st.container()
 
         # User input
+        
+            
         ## Function for taking user provided prompt as input
         with st.form("chat_input", clear_on_submit=True):
              a, b = st.columns([4, 1])
@@ -229,6 +231,10 @@ def main():
                   label_visibility="collapsed",
              )
         b.form_submit_button("Send", use_container_width=True)
+        
+        ## Applying the user input box
+        with input_container:
+            user_input_a = a
             
         
         # Log in to huggingface and grant authorization to huggingchat
