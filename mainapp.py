@@ -265,12 +265,12 @@ def main():
             if user_input:
                  response = generate_response(user_input)
                  st.session_state.past.append(user_input)
-                 response_placeholder = st.empty()
-                 response_placeholder.text("Generated Result: ")
-                 words = response.split()
-                 for word in words:
-                    response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
-                    time.sleep(0.1)
+             response_placeholder = st.empty()
+             response_placeholder.text("Generated Result: ")
+             words = response.split()
+             for word in words:
+                 response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+                 time.sleep(0.1)
                  
                           
     if page == "Select":
