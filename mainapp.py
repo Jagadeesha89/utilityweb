@@ -261,14 +261,15 @@ def main():
             with st.spinner('Generating response please wait...'):
                       time.sleep(7)
             st.success('Response generated')
-            words = response.split()
-            for word in words:
-                 response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
-                 time.sleep(0.1)
+            
             if user_input:
                  response = generate_response(user_input)
                  st.session_state.past.append(user_input)
-                 st.session_state.generated.append(response)
+                 words = response.split()
+                 for word in words:
+                    response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+                    time.sleep(0.1)
+                 
                  
                 
    
