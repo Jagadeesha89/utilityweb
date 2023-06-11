@@ -224,9 +224,9 @@ def main():
         with st.form("chat_input", clear_on_submit=True):
              a, b = st.columns([4, 1])
              user_input = a.text_input(
-                 label="Your message:",
-                 placeholder="What would you like to say?",
-                 label_visibility="collapsed",
+                  label="Your message:",
+                  placeholder="What would you like to say?",
+                  label_visibility="collapsed",
             )
             b.form_submit_button("Send", use_container_width=True)
             
