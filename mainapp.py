@@ -262,13 +262,12 @@ def main():
                       time.sleep(7)
             st.success('Response generated')
             if user_input:
-                response_placeholder = st.empty()
-                response_placeholder.response_container(" ")
+                response_placeholder = st.container()
                 response = generate_response(user_input)
                 st.session_state.past.append(user_input)
                 words = response.split()
                 for word in words:
-                    response_placeholder.response_container("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+                    response_placeholder("Generated Result: " + " ".join(words[:words.index(word) + 1]))
                     time.sleep(0.1)
                  
                           
