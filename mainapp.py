@@ -262,10 +262,10 @@ def main():
                  response = generate_response(user_input)
                  st.session_state.past.append(user_input)
                  st.session_state.generated.append(response)
-                    
-        with st.spinner('Generating response...'):
-             time.sleep(5)
-        st.success('Response Generated')
+                 with st.spinner('Generating response...'):
+                      time.sleep(5)
+                 st.success('Response Generated')
+          
         
         if st.session_state['generated']:
             for i in range(len(st.session_state['generated'])):
