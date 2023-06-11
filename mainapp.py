@@ -264,8 +264,8 @@ def main():
             
             if user_input:
                 response = generate_response(user_input)
-                 st.session_state.past.append(user_input)
-                 st.session_state.generated.append(response)
+                st.session_state.past.append(user_input)
+                st.session_state.generated.append(response)
         
         if st.session_state['generated']:
             for i in range(len(st.session_state['generated'])):
