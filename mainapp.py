@@ -215,11 +215,7 @@ def main():
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hello!']
 
-        # Layout of input/response containers
-        input_container = st.container()
-        colored_header(label='', description='', color_name='blue-30')
-        response_container = st.container()
-
+       
         # User input
         
             
@@ -232,7 +228,12 @@ def main():
                   label_visibility="collapsed",
              )
         b.form_submit_button("Send", use_container_width=True)
-        
+       
+     # Layout of input/response containers
+        input_container = st.container()
+        colored_header(label='', description='', color_name='blue-30')
+        response_container = st.container()
+
         ## Applying the user input box
         with input_container:
             user_input_a = a
@@ -264,7 +265,7 @@ def main():
                     
         with st.spinner('Generating response...'):
              time.sleep(5)
-        st.success('Done!')
+        st.success('Response Generated')
         
         if st.session_state['generated']:
             for i in range(len(st.session_state['generated'])):
