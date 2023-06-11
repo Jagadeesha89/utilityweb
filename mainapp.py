@@ -264,7 +264,13 @@ def main():
                  st.session_state.generated.append(response)
                  with st.spinner('Generating response...'):
                       time.sleep(5)
-                 st.success('Response Generated')
+                 st.success('Response generated')
+        response_placeholder = st.empty()
+        response_placeholder.text("Generated Result: ")
+        words = response.split()
+        for word in words:
+            response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+            time.sleep(0.1)
           
         
         if st.session_state['generated']:
