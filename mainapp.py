@@ -260,7 +260,7 @@ def main():
         with response_container:
             with st.spinner('Generating response...'):
                       time.sleep(5)
-                 st.success('Response generated')
+            st.success('Response generated')
             if user_input:
                  response = generate_response(user_input)
                  st.session_state.past.append(user_input)
