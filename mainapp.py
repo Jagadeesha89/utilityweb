@@ -247,9 +247,6 @@ def main():
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
         
-        with st.spinner('Generating response...'):
-             time.sleep(5)
-        st.success('Done!')
         
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
@@ -264,6 +261,10 @@ def main():
                  response = generate_response(user_input)
                  st.session_state.past.append(user_input)
                  st.session_state.generated.append(response)
+                    
+        with st.spinner('Generating response...'):
+             time.sleep(5)
+        st.success('Done!')
         
         if st.session_state['generated']:
             for i in range(len(st.session_state['generated'])):
