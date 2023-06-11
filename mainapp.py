@@ -262,7 +262,7 @@ def main():
                       time.sleep(7)
             st.success('Response generated')
             response_placeholder = st.empty()
-            response_placeholder.text("Generated Result: ")
+            response_placeholder.response_container(" ")
             
             if user_input:
                  response = generate_response(user_input)
