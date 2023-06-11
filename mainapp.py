@@ -6,6 +6,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
+import time
 
 
 
@@ -248,7 +249,7 @@ def main():
         
         with st.spinner('Generating response...'):
              time.sleep(5)
-             st.success('Done!')
+        st.success('Done!')
         
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
