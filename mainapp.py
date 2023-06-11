@@ -230,10 +230,7 @@ def main():
              )
         b.form_submit_button("Send", use_container_width=True)
             
-        ## Applying the user input box
-        with input_container:
-            user_input = get_text()
-            
+        
         # Log in to huggingface and grant authorization to huggingchat
         email="jaga.m.gowda@gmail.com"
         passwd="Jaga@9731"
