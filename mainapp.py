@@ -231,15 +231,12 @@ def main():
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
         
-        def generate_response(prompt):
-            chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-            response = chatbot.chat(prompt)
-            return response
     
         if user_input:
             st.session_state.messages.append({"role": "user", "content": user_input})
             message(user_input, is_user=True)
-            response = genrate_response(messages=st.session_state.messages)
+            chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+            response = chatbot.chat(messages=st.session_state.messages)
             msg = response.choices[0].message
             st.session_state.messages.append(msg)
             message(msg.content)
