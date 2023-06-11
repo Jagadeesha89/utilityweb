@@ -246,9 +246,9 @@ def main():
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
         
-        with st.spinner('Wait for it...'):
-              time.sleep(5)
-        st.success('Done!')
+        with st.spinner('Generating response...'):
+             time.sleep(5)
+             st.success('Done!')
         
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
