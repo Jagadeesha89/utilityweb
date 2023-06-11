@@ -269,7 +269,7 @@ def main():
                  st.session_state.past.append(user_input)
                  words = response.split()
                  for word in words:
-                     response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+                     response_placeholder.response_container("Generated Result: " + " ".join(words[:words.index(word) + 1]))
                      time.sleep(0.1)
                  
                           
