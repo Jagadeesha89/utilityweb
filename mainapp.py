@@ -259,20 +259,19 @@ def main():
         ## Conditional display of AI generated responses as a function of user provided prompts
         with response_container:
             if user_input:
-                 response = generate_response(user_input)
-                 st.session_state.past.append(user_input)
-                 st.session_state.generated.append(response)
-                 with st.spinner('Generating response...'):
+                with st.spinner('Generating response...'):
                       time.sleep(5)
                  st.success('Response generated')
-        response_placeholder = st.empty()
-        response_placeholder.text("Generated Result: ")
-        words = response.split()
-        for word in words:
-            response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
-            time.sleep(0.1)
-          
-        
+                 response = generate_response(user_input)
+                 st.session_state.past.append(user_input)
+                 st.session_state.generated.append(response_placeholder = st.empty()
+                                                   response_placeholder.text("Generated Result: ")
+                                                    words = response.split()
+                                                    for word in words:
+                                                        response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
+                                                        time.sleep(0.1))
+                 
+                
         if st.session_state['generated']:
             for i in range(len(st.session_state['generated'])):
                 message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
