@@ -208,6 +208,27 @@ def main():
          ''')
             
         ## generated stores AI generated responses
+        if 'generated' not in st.session_state:
+            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+        ## past stores User's questions
+        if 'past' not in st.session_state:
+            st.session_state['past'] = ['Hi!']
+
+        # Layout of input/response containers
+        input_container = st.container()
+        colored_header(label='', description='', color_name='blue-30')
+        response_container = st.container()
+
+        # User input
+        ## Function for taking user provided prompt as input
+        def get_text():
+            input_text = st.text_input("You:", "", key="input")
+            return input_text
+            
+        ## Applying the user input box
+        with input_container:
+            user_input = get_text()
+        # Log in to huggingface and grant authorization to huggingchat
         email="jaga.m.gowda@gmail.com"
         passwd="Jaga@9731"
         sign = Login(email, passwd)
@@ -215,7 +236,6 @@ def main():
 
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
-
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
         def generate_response(prompt):
@@ -223,27 +243,17 @@ def main():
             response = chatbot.chat(prompt)
             return response
 
-        # Set the layout of the app
-        st.layout = st.container()
-
-        # Add a text input field
-        text_input = st.text_input("Enter your message")
-
-        # If the user enters a message, generate the result and display it
-        if text_input:
-         # Get the user's query
-            query = text_input
-
-        # Generate the result
-        result = generate_response(query)
-
-        # Display the user's query, the result, and the conversation history
-        st.write("User query:", query)
-        st.write("Result:", result)
-        st.write("Conversation history:")
-        for message in result._conversation_history:
-             st.write(message)
-
+        ## Conditional display of AI generated responses as a function of user provided prompts
+        with response_container:
+            if user_input:
+                 response = generate_response(user_input)
+                 st.session_state.past.append(user_input)
+                 st.session_state.generated.append(response)
+        
+        if st.session_state['generated']:
+            for i in range(len(st.session_state['generated'])):
+                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+                message(st.session_state["generated"][i], key=str(i))
             
     if page == "Select":
         st.write("Please select the services")
