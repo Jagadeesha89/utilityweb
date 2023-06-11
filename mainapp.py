@@ -209,10 +209,10 @@ def main():
             
         ## generated stores AI generated responses
         if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+            st.session_state['generated'] = ["I'm AI powered Chat GPT, How may I help you?"]
         ## past stores User's questions
         if 'past' not in st.session_state:
-            st.session_state['past'] = ['Hi!']
+            st.session_state['past'] = ['Hello!']
 
         # Layout of input/response containers
         input_container = st.container()
@@ -221,9 +221,14 @@ def main():
 
         # User input
         ## Function for taking user provided prompt as input
-        def get_text():
-            input_text = st.text_input("You:", "", key="input")
-            return input_text
+        with st.form("chat_input", clear_on_submit=True):
+             a, b = st.columns([4, 1])
+             user_input = a.text_input(
+                 label="Your message:",
+                 placeholder="What would you like to say?",
+                 label_visibility="collapsed",
+            )
+            b.form_submit_button("Send", use_container_width=True)
             
         ## Applying the user input box
         with input_container:
@@ -236,6 +241,7 @@ def main():
 
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
+        
         # Response output
         ## Function for taking user prompt as input followed by producing AI generated responses
         def generate_response(prompt):
