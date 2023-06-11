@@ -221,7 +221,7 @@ def main():
                 b.form_submit_button("Send", use_container_width=True)
 
         for msg in st.session_state.messages:
-                message(msg["content"], is_user=msg["role"] == "user")
+            message(msg["content"], is_user=msg["role"] == "user")
 
         email="jaga.m.gowda@gmail.com"
         passwd="Jaga@9731"
