@@ -13,7 +13,7 @@ from hugchat.login import Login
 
 
 ti=st.title("Welcome to Utility Services")
-page=st.selectbox("List of Services",("Select","EMI Calculator","Tax Calculator","AI Powered Chat GPT"))
+page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
 
 def main():
