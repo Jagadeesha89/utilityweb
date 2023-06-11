@@ -270,10 +270,7 @@ def main():
                     response_placeholder.text("Generated Result: " + " ".join(words[:words.index(word) + 1]))
                     time.sleep(0.1)
                  
-                 
-                
-   
-            
+                          
     if page == "Select":
         st.write("Please select the services")
     elif page == "EMI Calculator":
