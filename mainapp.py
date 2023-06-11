@@ -208,21 +208,6 @@ def main():
          ''')
             
         ## generated stores AI generated responses
-        if "messages" not in st.session_state:
-                st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
-
-        with st.form("chat_input", clear_on_submit=True):
-                a, b = st.columns([4, 1])
-                user_input = a.text_input(
-                    label="Your message:",
-                    placeholder="What would you like to say?",
-                    label_visibility="collapsed",
-                )
-                b.form_submit_button("Send", use_container_width=True)
-
-        for msg in st.session_state.messages:
-            message(msg["content"], is_user=msg["role"] == "user")
-
         email="jaga.m.gowda@gmail.com"
         passwd="Jaga@9731"
         sign = Login(email, passwd)
@@ -230,16 +215,35 @@ def main():
 
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
-        
-    
-        if user_input:
-            st.session_state.messages.append({"role": "user", "content": user_input})
-            message(user_input, is_user=True)
+
+        # Response output
+        ## Function for taking user prompt as input followed by producing AI generated responses
+        def generate_response(prompt):
             chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-            response = chatbot.chat(messages=st.session_state.messages)
-            msg = response.choices[0].message
-            st.session_state.messages.append(msg)
-            message(msg.content)
+            response = chatbot.chat(prompt)
+            return response
+
+        # Set the layout of the app
+        st.layout = st.container()
+
+        # Add a text input field
+        text_input = st.text_input("Enter your message")
+
+        # If the user enters a message, generate the result and display it
+        if text_input:
+         # Get the user's query
+            query = text_input
+
+        # Generate the result
+        result = generate_response(query)
+
+        # Display the user's query, the result, and the conversation history
+        st.write("User query:", query)
+        st.write("Result:", result)
+        st.write("Conversation history:")
+        for message in result._conversation_history:
+             st.write(message)
+
             
     if page == "Select":
         st.write("Please select the services")
