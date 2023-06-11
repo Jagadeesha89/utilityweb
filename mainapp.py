@@ -265,7 +265,7 @@ def main():
                 
         with st.spinner('Generating response please wait...'):
                       time.sleep(10)
-                st.success('Response generated')
+        st.success('Response generated')
                 
         if st.session_state['generated']:
            for i in range(len(st.session_state['generated'])):
