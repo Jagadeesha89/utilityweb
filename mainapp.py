@@ -264,7 +264,7 @@ def main():
                 st.session_state.generated.append(response)
                 
         with st.spinner('Generating response please wait...'):
-                      time.sleep(2)
+                      time.sleep(5)
         st.success('Response generated')
                 
         if st.session_state['generated']:
