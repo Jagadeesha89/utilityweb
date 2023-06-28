@@ -16,13 +16,13 @@ messages = []
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     full_response = ""
-    message_placeholder = st.empty()
     response = chatbot.chat(prompt, stream=True)
     if isinstance(response, str):
         full_response += response
     else:
         for choice in response.choices:
             full_response += choice.delta.get("content", "")
+            message_placeholder.markdown(full_response + "▌")
     return full_response
 
 if "messages" not in st.session_state:
@@ -35,8 +35,10 @@ for message in st.session_state.messages:
 prompt = st.chat_input("What is up?")
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
-    full_response = get_response(prompt)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    full_response = ""
     with st.chat_message("assistant"):
-        message_placeholder.markdown(full_response + "▌")
-    message_placeholder.markdown(full_response)
+        message_placeholder = st.empty()
+        for char in get_response(prompt):
+            full_response += char
+            message_placeholder.markdown(full_response)
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
