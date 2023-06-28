@@ -22,7 +22,6 @@ def get_response(prompt):
     else:
         for choice in response.choices:
             full_response += choice.delta.get("content", "")
-            message_placeholder.markdown(full_response + "▌")
     return full_response
 
 if "messages" not in st.session_state:
