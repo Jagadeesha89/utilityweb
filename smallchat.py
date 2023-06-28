@@ -14,21 +14,21 @@ messages = []
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     full_response = ""
-    for response in chatbot.chat(text=prompt, stream=False):
-        full_response += response.delta.get("content", "")
+    for response in chatbot.chat(prompt, stream=False):
+        full_response += response.choices[0].delta.get("content", "")
     return full_response
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-for message in messages:
+for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 prompt = st.chat_input("What is up?")
 if prompt:
-    messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt})
     full_response = get_response(prompt)
-    messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
         st.markdown(full_response)
