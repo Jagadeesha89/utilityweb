@@ -15,7 +15,7 @@ def append_message(role, content):
     global messages
     messages.append({"role": role, "content": content})
 
-@st.cache(suppress_output=True)
+
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     for message in messages:
