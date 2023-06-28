@@ -5,11 +5,6 @@ from hugchat import hugchat
 from hugchat.login import Login
 import time
 
-
-
-
-
-
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
@@ -212,9 +207,7 @@ def main():
 
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
-
         
-
         # Initialize chat history
         if "messages" not in st.session_state:
             st.session_state.messages = []
@@ -226,30 +219,30 @@ def main():
 
         # Accept user input
         if prompt := st.chat_input("What is up?"):
-        # Add user message to chat history
+            # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
             # Display user message in chat message container
             with st.chat_message("user"):
                 st.markdown(prompt)
-    # Display assistant response in chat message container
-        with st.chat_message("assistant"):
-            message_placeholder = st.empty()
-            full_response = ""
+            # Display assistant response in chat message container
+            with st.chat_message("assistant"):
+                message_placeholder = st.empty()
+                full_response = ""
 
-        def generate_response(prompt):
-            chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-            response = chatbot.chat(prompt, stream=True)
-            if isinstance(response, str):
-                return response
-            else:
-                return response.delta.get("content", "")
+                def generate_response(prompt):
+                    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+                    response = chatbot.chat(prompt, stream=True)
+                    if isinstance(response, str):
+                        return response
+                else:
+                    return response.delta.get("content", "")
 
-        for response in generate_response(prompt):
-            full_response += response
-            message_placeholder.markdown(full_response + "▌")
-            sleep(0.01)
-        message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+                for response in generate_response(prompt):
+                    full_response += response
+                    message_placeholder.markdown(full_response + "▌")
+                    sleep(0.01)
+                message_placeholder.markdown(full_response)
+            st.session_state.messages.append({"role": "assistant", "content": full_response})
                  
                           
     if page == "Select":
