@@ -15,7 +15,7 @@ def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     full_response = ""
     for response in chatbot.chat(text=prompt, stream=False):
-        full_response += response.choices[0].delta.get("content", "")
+        full_response += response.delta.get("content", "")
     return full_response
 
 if "messages" not in st.session_state:
