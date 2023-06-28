@@ -32,17 +32,15 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        
-def generate_response({"role": "user", "content": prompt}):
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    response = chatbot.chat(prompt)
-    return response
-    
-for response in generate_response({"role": "user", "content": prompt}),
-        messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
-        stream=True,
-    ):
-        full_response += response.choices[0].delta.get("content", "")
-        message_placeholder.markdown(full_response + "▌")
-    message_placeholder.markdown(full_response)
-st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+        def generate_response(prompt):
+            chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+            response = chatbot.chat(prompt, stream=True)
+            return response
+
+        for response in generate_response(prompt):
+            full_response += response.choices[0].delta.get("content", "")
+            message_placeholder.markdown(full_response + "▌")
+            sleep(0.01)
+        message_placeholder.markdown(full_response)
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
