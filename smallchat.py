@@ -11,15 +11,8 @@ st.title("ChatGPT-like clone")
 
 messages = []
 
-def append_message(role, content):
-    global messages
-    messages.append({"role": role, "content": content})
-
-
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    for message in messages:
-        chatbot.append_message(role=message["role"], content=message["content"])
 
     full_response = ""
     for response in chatbot.chat(stream=False):
@@ -35,8 +28,8 @@ for message in messages:
 
 prompt = st.chat_input("What is up?")
 if prompt:
-    append_message("user", prompt)
+    messages.append({"role": "user", "content": prompt})
     full_response = get_response(prompt)
-    append_message("assistant", full_response)
+    messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
         st.markdown(full_response)
