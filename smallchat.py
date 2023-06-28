@@ -15,9 +15,7 @@ st.title("ChatGPT-like clone")
 messages = []
 
 def type_writer_text(text):
-    for char in text:
-        st.write(char, end='', flush=True)
-        sleep(0.01)
+    st.write(text, end='', flush=True)
 
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
