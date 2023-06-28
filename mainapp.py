@@ -1,9 +1,10 @@
-import streamlit as st
 import pandas as pd
 import numpy as np
+import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
-import time
+from time import sleep
+
 
 ti=st.title("Welcome to Utility Services")
 page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
@@ -112,14 +113,8 @@ def main():
                          "New Tax Regim":[income,0,stan_dedcu,n_tax,new_tax,"4",final_new_tax_1],
                          "Old Tax Regim":[income,deduction,stan_dedcu,b_tax,old_tax,"4",final_old_tax_1]})
         
-            df=df.set_index("Particulars")
-    
-        
+            df=df.set_index("Particulars")       
             st.table(df)
-   
-        
-       
-        
             if final_old_tax_1 > final_new_tax_1:
                 st.write ("***Old Tax Regim having higher tax laiblity","," "if you opted for New Tax Regim you will save Rs.***",(f"{a}"),"/-")
             elif final_old_tax_1 == final_new_tax_1:
