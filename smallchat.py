@@ -16,8 +16,12 @@ messages = []
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     full_response = ""
-    for response in chatbot.chat(prompt, stream=False):
-        full_response += response.delta.get("content", "")
+    response = chatbot.chat(prompt, stream=False)
+    if isinstance(response, str):
+        full_response += response
+    else:
+        for choice in response.choices:
+            full_response += choice.delta.get("content", "")
     return full_response
 
 if "messages" not in st.session_state:
@@ -34,3 +38,4 @@ if prompt:
     st.session_state.messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
         st.markdown(full_response)
+In this updated code, I added a check to handle the case where the chatbot.chat() method returns a string instead 
