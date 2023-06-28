@@ -38,4 +38,3 @@ if prompt:
     st.session_state.messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
         st.markdown(full_response)
-In this updated code, I added a check to handle the case where the chatbot.chat() method returns a string instead 
