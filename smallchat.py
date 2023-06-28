@@ -28,9 +28,11 @@ if prompt := st.chat_input("What is up?"):
     message_placeholder = st.empty()
     full_response = ""
 
-    # Create the ChatBot object and pass the user's prompt as a list of messages
-    chatbot = hugchat.ChatBot(messages=[{"role": "user", "content": prompt}])
-    for response in chatbot.chat(cookies=cookies.get_dict(), stream=True):
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    for message in st.session_state.messages:
+        chatbot.append_message(role=message["role"], content=message["content"])
+
+    for response in chatbot.chat(stream=True):
         full_response += response.choices[0].delta.get("content", "")
         message_placeholder.markdown(full_response + "▌")
 
