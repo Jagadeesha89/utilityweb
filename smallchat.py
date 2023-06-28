@@ -36,10 +36,10 @@ if prompt := st.chat_input("What is up?"):
         def generate_response(prompt):
             chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
             response = chatbot.chat(prompt, stream=True)
-            return response
+            return response.choices[0].delta.get("content", "")
 
         for response in generate_response(prompt):
-            full_response += response.choices[0].delta.get("content", "")
+            full_response += response
             message_placeholder.markdown(full_response + "▌")
             sleep(0.01)
         message_placeholder.markdown(full_response)
