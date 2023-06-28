@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from streamlit_chat import message
-from streamlit_extras.colored_header import colored_header
-from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
 import time
@@ -208,69 +205,51 @@ def main():
          💡 Note: No API key required!
          ''')
             
-        ## generated stores AI generated responses
-        if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["I'm AI powered Chat GPT, How may I help you?"]
-        ## past stores User's questions
-        if 'past' not in st.session_state:
-            st.session_state['past'] = ['Hello!']
-
-       
-        # User input
-        
-            
-        ## Function for taking user provided prompt as input
-        with st.form("chat_input", clear_on_submit=True):
-             a, b = st.columns([4, 1])
-             user_input = a.text_input(
-                  label="Your message:",
-                  placeholder="What would you like to say?",
-                  label_visibility="collapsed",
-             )
-        b.form_submit_button("Send", use_container_width=True)
-       
-     # Layout of input/response containers
-        input_container = st.container()
-        colored_header(label='', description='', color_name='blue-30')
-        response_container = st.container()
-
-        ## Applying the user input box
-        with input_container:
-            user_input_a = a
-            
-        
-        # Log in to huggingface and grant authorization to huggingchat
-        email="jaga.m.gowda@gmail.com"
-        passwd="Jaga@9731"
+        email = "jaga.m.gowda@gmail.com"
+        passwd = "Jaga@9731"
         sign = Login(email, passwd)
         cookies = sign.login()
 
         # Save cookies to usercookies/<email>.json
         sign.saveCookies()
+
         
-        
-        # Response output
-        ## Function for taking user prompt as input followed by producing AI generated responses
+
+        # Initialize chat history
+        if "messages" not in st.session_state:
+            st.session_state.messages = []
+
+        # Display chat messages from history on app rerun
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+        # Accept user input
+        if prompt := st.chat_input("What is up?"):
+        # Add user message to chat history
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            # Display user message in chat message container
+            with st.chat_message("user"):
+                st.markdown(prompt)
+    # Display assistant response in chat message container
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
+
         def generate_response(prompt):
             chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-            response = chatbot.chat(prompt)
-            return response
+            response = chatbot.chat(prompt, stream=True)
+            if isinstance(response, str):
+                return response
+            else:
+                return response.delta.get("content", "")
 
-        ## Conditional display of AI generated responses as a function of user provided prompts
-        with response_container:
-             if user_input:
-                response = generate_response(user_input)
-                st.session_state.past.append(user_input)
-                st.session_state.generated.append(response)
-                
-        with st.spinner('Generating response please wait...'):
-                      time.sleep(5)
-        st.success('Response generated')
-                
-        if st.session_state['generated']:
-           for i in range(len(st.session_state['generated'])):
-                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-                message(st.session_state["generated"][i], key=str(i))
+        for response in generate_response(prompt):
+            full_response += response
+            message_placeholder.markdown(full_response + "▌")
+            sleep(0.01)
+        message_placeholder.markdown(full_response)
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
                  
                           
     if page == "Select":
