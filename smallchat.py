@@ -6,36 +6,37 @@ email = "jaga.m.gowda@gmail.com"
 passwd = "Jaga@9731"
 sign = Login(email, passwd)
 cookies = sign.login()
-# Save cookies to usercookies/<email>.json
-sign.saveCookies()
 
 st.title("ChatGPT-like clone")
+
+messages = []
+
+def append_message(role, content):
+    global messages
+    messages.append({"role": role, "content": content})
+
+@st.cache(suppress_output=True)
+def get_response(prompt):
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    for message in messages:
+        chatbot.append_message(role=message["role"], content=message["content"])
+
+    full_response = ""
+    for response in chatbot.chat(stream=False):
+        full_response += response.choices[0].delta.get("content", "")
+    return full_response
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-for message in st.session_state.messages:
+for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.markdown(prompt)
-
-    # Response output
-    # Function for taking user prompt as input followed by producing AI generated response
-    message_placeholder = st.empty()
-    full_response = ""
-
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    for message in st.session_state.messages:
-        chatbot.append_message(role=message["role"], content=message["content"])
-
-    for response in chatbot.chat(stream=True):
-        full_response += response.choices[0].delta.get("content", "")
-        message_placeholder.markdown(full_response + "▌")
-
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+prompt = st.chat_input("What is up?")
+if prompt:
+    append_message("user", prompt)
+    full_response = get_response(prompt)
+    append_message("assistant", full_response)
     with st.chat_message("assistant"):
-        message_placeholder.markdown(full_response)
+        st.markdown(full_response)
