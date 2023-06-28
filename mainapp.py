@@ -234,8 +234,8 @@ def main():
                     response = chatbot.chat(prompt, stream=True)
                     if isinstance(response, str):
                         return response
-                else:
-                    return response.delta.get("content", "")
+                    else:
+                        return response.delta.get("content", "")
 
                 for response in generate_response(prompt):
                     full_response += response
