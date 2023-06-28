@@ -43,4 +43,4 @@ if prompt:
     full_response = get_response(prompt)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
-        type_writer_text(full_response)
+type_writer_text(full_response)
