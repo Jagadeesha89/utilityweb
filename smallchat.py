@@ -23,11 +23,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 # Response output
-## Function for taking user prompt as input followed by producing AI generated responses
-def generate_response(prompt):
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    response = chatbot.chat(prompt)
-    return response
+## Function for taking user prompt as input followed by producing AI generated response
 
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
