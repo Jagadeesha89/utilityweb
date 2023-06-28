@@ -1,6 +1,7 @@
 import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
+from time import sleep
 
 email = "jaga.m.gowda@gmail.com"
 passwd = "Jaga@9731"
@@ -12,6 +13,11 @@ sign.saveCookies()
 st.title("ChatGPT-like clone")
 
 messages = []
+
+def type_writer_text(text):
+    for char in text:
+        st.write(char, end='', flush=True)
+        sleep(0.01)
 
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
@@ -34,10 +40,7 @@ for message in st.session_state.messages:
 prompt = st.chat_input("What is up?")
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
-    full_response = ""
-    with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        for char in get_response(prompt):
-            full_response += char
-            message_placeholder.markdown(full_response)
+    full_response = get_response(prompt)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+    with st.chat_message("assistant"):
+        type_writer_text(full_response)
