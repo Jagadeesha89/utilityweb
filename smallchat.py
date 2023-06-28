@@ -38,4 +38,5 @@ if prompt:
     full_response = get_response(prompt)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
     with st.chat_message("assistant"):
-        st.markdown(full_response)
+        message_placeholder.markdown(full_response + "▌")
+    message_placeholder.markdown(full_response)
