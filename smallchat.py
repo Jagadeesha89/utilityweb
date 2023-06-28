@@ -16,6 +16,7 @@ messages = []
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     full_response = ""
+    message_placeholder = st.empty()
     response = chatbot.chat(prompt, stream=True)
     if isinstance(response, str):
         full_response += response
