@@ -13,9 +13,8 @@ messages = []
 
 def get_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-
     full_response = ""
-    for response in chatbot.chat(stream=False):
+    for response in chatbot.chat(text=prompt, stream=False):
         full_response += response.choices[0].delta.get("content", "")
     return full_response
 
