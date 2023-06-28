@@ -32,7 +32,7 @@ def generate_response(prompt):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        for response in generate_response(prompt),
+        for response in hugchat.ChatBot(cookies=cookies.get_dict()),chatbot.chat(prompt),
             messages=[
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
