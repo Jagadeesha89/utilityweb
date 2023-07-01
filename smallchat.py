@@ -48,9 +48,9 @@ if prompt := st.chat_input("What is up?"):
                 return response.delta.get("content", "")
 
         for response in generate_response(prompt):
-            with st.spinner("Genrating response...):      
+            with st.spinner("Genrating response...):
                  full_response += response
                  message_placeholder.markdown(full_response + "▌")
                  sleep(0.01)
-             message_placeholder.markdown(full_response)
-         st.session_state.messages.append({"role": "assistant", "content": full_response})
+            message_placeholder.markdown(full_response)
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
