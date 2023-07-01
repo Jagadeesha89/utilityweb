@@ -46,11 +46,10 @@ if prompt := st.chat_input("What is up?"):
                 return response
             else:
                 return response.delta.get("content", "")
-
+    
         for response in generate_response(prompt):
             full_response += response
-            with st.spinner("Generating Report....\nplease wait...."):
-                 message_placeholder.markdown(full_response + "▌")
-                 sleep(0.01)
+            message_placeholder.markdown(full_response + "▌")
+            sleep(0.01)
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
