@@ -2,7 +2,7 @@ import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
 from time import sleep
-from hugchat_api import huggingChat
+from hugchat_api import HuggingChat
 import os
 
 EMAIL = "jaga.m.gowda@gmail.com"
