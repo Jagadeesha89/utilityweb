@@ -14,6 +14,12 @@ sign=HUG.getSign(EMAIL,PASSWD)
 cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
 cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
 
+sign = Login(email, passwd)
+cookies = sign.login()
+
+# Save cookies to usercookies/<email>.json
+sign.saveCookies()
+
 
 st.title("ChatGPT-like clone")
 
