@@ -48,7 +48,7 @@ if prompt := st.chat_input("What is up?"):
                 return response.delta.get("content", "")
 
         for response in generate_response(prompt):
-            with st.spinner("Genrating response...):
+            with st.spinner("Generating Report....\nplease wait...."):
                  full_response += response
                  message_placeholder.markdown(full_response + "▌")
                  sleep(0.01)
