@@ -7,6 +7,7 @@ import os
 
 EMAIL = "jaga.m.gowda@gmail.com"
 PASSWD = "Jaga@9731"
+COOKIE_STORE_PATH = "./usercookies"
 
 HUG= HuggingChat(max_thread=1)
 
