@@ -14,7 +14,7 @@ page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calcul
 
 def main():
     def tax_cal():
-        st.title("Tax Calculator")
+        st.title("Tax Calculator 📝")
         income=st.text_input("**Total Income (Rs)**")
         ded_1=st.text_input("**Deduction under 80c**",0)
         ded_2=st.text_input("**Interest on Home Loan**",0)
