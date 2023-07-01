@@ -235,7 +235,6 @@ def main():
                         return response.delta.get("content", "")
 
                 for response in generate_response(prompt):
-                    with st.spinner("Generating response..)
                     full_response += response
                     message_placeholder.markdown(full_response + "▌")
                     sleep(0.01)
