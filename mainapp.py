@@ -187,14 +187,13 @@ def main():
             st.dataframe(df)
         
     def chatbot():
-        st.title("AI powered Chat GPT")
+        st.title("AI powered Chat GPT💬")
         st.markdown('''
-         - This app is an LLM-powered chatbot built using,HugChat
          - This may produce inacurate information about people, places, or facts
          - Limited knowledge of world and events after 2021
          
          
-         💡 Note: No API key required!
+         💡 Note: No Sign-in or API key required!
          ''')
             
         EMAIL = st.secrets["DB_EMAIL"]
@@ -216,7 +215,7 @@ def main():
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
         # Accept user input
-        if prompt := st.chat_input("What is up?"):
+        if prompt := st.chat_input("🧑‍💻 Write here 👇"):
             # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
             # Display user message in chat message container
