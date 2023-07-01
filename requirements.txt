@@ -3,6 +3,6 @@ numpy>=1.21.0
 streamlit>=1.24.0
 hugchat>=0.0.8
 streamlit-extras>=0.0.1
-hugchat_api
+hugchat-api
 pyngrok>=5.0.0
 transformers>=4.11.0
