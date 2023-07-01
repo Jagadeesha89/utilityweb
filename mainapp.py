@@ -197,15 +197,15 @@ def main():
          💡 Note: No API key required!
          ''')
             
-       EMAIL = "jaga.m.gowda@gmail.com"
-       PASSWD = "Jaga@9731"
-       COOKIE_STORE_PATH = "./usercookies"
+        EMAIL = "jaga.m.gowda@gmail.com"
+        PASSWD = "Jaga@9731"
+        COOKIE_STORE_PATH = "./usercookies"
 
-       HUG= HuggingChat(max_thread=1)
+        HUG= HuggingChat(max_thread=1)
 
-       sign=HUG.getSign(EMAIL,PASSWD)
-       cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
-       cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
+        sign=HUG.getSign(EMAIL,PASSWD)
+        cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
+        cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
         
         # Initialize chat history
         if "messages" not in st.session_state:
