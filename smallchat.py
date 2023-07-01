@@ -2,14 +2,18 @@ import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
 from time import sleep
+from hugchat_api import huggingChat
+import os
 
-email = "jaga.m.gowda@gmail.com"
-passwd = "Jaga@9731"
-sign = Login(email, passwd)
-cookies = sign.login()
+EMAIL = "jaga.m.gowda@gmail.com"
+PASSWD = "Jaga@9731"
 
-# Save cookies to usercookies/<email>.json
-sign.saveCookies()
+HUG= HuggingChat(max_thread=1)
+
+sign=HUG.getSign(EMAIL,PASSWD)
+cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
+cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
+
 
 st.title("ChatGPT-like clone")
 
