@@ -5,8 +5,8 @@ from time import sleep
 from hugchat_api import HuggingChat
 import os
 
-EMAIL = "jaga.m.gowda@gmail.com"
-PASSWD = "Jaga@9731"
+EMAIL = st.secrets["DB_EMAIL"]
+PASSWD = st.secrets["DB_PASS"]
 COOKIE_STORE_PATH = "./usercookies"
 
 HUG= HuggingChat(max_thread=1)
