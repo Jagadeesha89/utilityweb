@@ -4,6 +4,8 @@ import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
 from time import sleep
+from hugchat_api import HuggingChat
+import os
 
 
 ti=st.title("Welcome to Utility Services")
@@ -195,13 +197,15 @@ def main():
          💡 Note: No API key required!
          ''')
             
-        email = "jaga.m.gowda@gmail.com"
-        passwd = "Jaga@9731"
-        sign = Login(email, passwd)
-        cookies = sign.login()
+       EMAIL = "jaga.m.gowda@gmail.com"
+       PASSWD = "Jaga@9731"
+       COOKIE_STORE_PATH = "./usercookies"
 
-        # Save cookies to usercookies/<email>.json
-        sign.saveCookies()
+       HUG= HuggingChat(max_thread=1)
+
+       sign=HUG.getSign(EMAIL,PASSWD)
+       cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
+       cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
         
         # Initialize chat history
         if "messages" not in st.session_state:
