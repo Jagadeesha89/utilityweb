@@ -128,7 +128,7 @@ def main():
            
     def loan_repay():
     
-        st.title("Loan EMI Calculator 🖩 ")
+        st.title("Loan EMI Calculator 🏦 ")
         Loan=st.text_input("**Loan Amount**")
         Interest=st.text_input("**Enter Rate of Interest (without %)**")
         Tenor=st.text_input("**Number of months**")
@@ -187,7 +187,7 @@ def main():
             st.dataframe(df)
         
     def chatbot():
-        st.title("AI powered Chat GPT💬")
+        st.title("AI powered Chat GPT 💬")
         st.markdown('''
          - This may produce inacurate information about people, places, or facts
          - Limited knowledge of world and events after 2021
