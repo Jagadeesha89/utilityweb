@@ -223,7 +223,7 @@ def main():
                 st.markdown(prompt)
             # Display assistant response in chat message container
              with st.spinner('Generating response....'):
-                with st.chat_message("assistant"):
+                 with st.chat_message("assistant"):
                     message_placeholder = st.empty()
                     full_response = ""
                     
