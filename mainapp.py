@@ -8,7 +8,7 @@ from hugchat_api import HuggingChat
 import os
 
 
-ti=st.title("Welcome to Utility Services 📇")
+ti=st.title("Welcome to AI Utility Services 📇")
 page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
 
@@ -224,7 +224,8 @@ def main():
             # Display assistant response in chat message container
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
-                full_response = ""
+                with st.spinner("Generating response...."):
+                    full_response = ""
 
                 def generate_response(prompt):
                     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
