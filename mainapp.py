@@ -224,8 +224,7 @@ def main():
             # Display assistant response in chat message container
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
-                with st.spinner("Generating response...."):
-                    full_response = ""
+                full_response = ""
 
                 def generate_response(prompt):
                     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
@@ -237,8 +236,9 @@ def main():
 
                 for response in generate_response(prompt):
                     full_response += response
-                    message_placeholder.markdown(full_response + "▌")
-                    sleep(0.01)
+                    with st.spinner("Generating response...."):
+                        message_placeholder.markdown(full_response + "▌")
+                        sleep(0.01)
                 message_placeholder.markdown(full_response)
             st.session_state.messages.append({"role": "assistant", "content": full_response})
                  
