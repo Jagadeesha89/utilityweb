@@ -236,9 +236,9 @@ def main():
 
                 for response in generate_response(prompt):
                     full_response += response
-                    with st.spinner("Generating response...."):
-                        message_placeholder.markdown(full_response + "▌")
-                        sleep(0.01)
+                    st.spinner("Generating response...."):
+                    message_placeholder.markdown(full_response + "▌")
+                    sleep(0.01)
                 message_placeholder.markdown(full_response)
             st.session_state.messages.append({"role": "assistant", "content": full_response})
                  
