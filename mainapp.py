@@ -218,6 +218,8 @@ def main():
         if prompt := st.chat_input("Send your query"):
             # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
+            # Append the dialogue history to the user's prompt
+            dialogue_history = "\n".join([message["content"] for message in st.session_state.messages])
             # Display user message in chat message container
             with st.chat_message("user"):
                 st.markdown(prompt)
@@ -227,21 +229,31 @@ def main():
                     message_placeholder = st.empty()
                     full_response = ""
                     
-                        
-                def generate_response(prompt):
-                    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-                    response = chatbot.chat(prompt, stream=True)
-                    if isinstance(response, str):
-                        return response
-                    else:
-                        return response.delta.get("content", "")
+                    def generate_response(dialogue_history):
+                        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+                        response = chatbot.chat(dialogue_history, stream=True)
+                        if isinstance(response, str):
+                            return response
+                        else:
+                            return response.delta.get("content", "")
 
-                for response in generate_response(prompt):
-                    full_response += response
-                    message_placeholder.markdown(full_response + "▌")
-                    sleep(0.01)
-                message_placeholder.markdown(full_response)
-            st.session_state.messages.append({"role": "assistant", "content": full_response})
+                    for response in generate_response(dialogue_history):
+                        full_response += response
+                        message_placeholder.markdown(full_response + "▌")
+                        sleep(0.01)
+                    message_placeholder.markdown(full_response)
+
+                    # Check if there are follow-up questions
+                    if "?" in prompt:
+                    # Update the chat history with the assistant's response
+                        st.session_state.messages.append({"role": "assistant", "content": full_response})
+                        # Clear the chat input box
+                        st.session_state.prompt = ""
+                        # Set the chat input box value to the assistant's response
+                        st.chat_input("Follow-up question", value=full_response)
+
+                    # Update the chat history
+                    st.session_state.messages.append({"role": "assistant", "content": full_response})
                  
                           
     if page == "Select":
