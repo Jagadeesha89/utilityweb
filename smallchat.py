@@ -3,18 +3,16 @@ from hugchat import hugchat
 from hugchat.login import Login
 from time import sleep
 from hugchat_api import HuggingChat
-import os
 
 EMAIL = st.secrets["DB_EMAIL"]
 PASSWD = st.secrets["DB_PASS"]
 COOKIE_STORE_PATH = "./usercookies"
 
-HUG= HuggingChat(max_thread=1)
+HUG = HuggingChat(max_thread=1)
 
-sign=HUG.getSign(EMAIL,PASSWD)
-cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
-cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
-
+sign = HUG.getSign(EMAIL, PASSWD)
+cookies = sign.login(save=True, cookie_dir_path=COOKIE_STORE_PATH)
+cookies = sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
 
 st.title("ChatGPT-like clone")
 
@@ -55,4 +53,15 @@ if prompt := st.chat_input("Send your query"):
                 message_placeholder.markdown(full_response + "▌")
                 sleep(0.01)
             message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+            # Check if there are follow-up questions
+            if "?" in prompt:
+                # Add the assistant's response to the dialogue history
+                st.session_state.messages.append({"role": "assistant", "content": full_response})
+                # Clear the chat input box
+                st.session_state.prompt = ""
+                # Set the chat input box value to the assistant's response
+                st.chat_input("Follow-up question", value=full_response)
+
+# Update the chat history
+st.session_state.messages.append({"role": "assistant", "content": full_response})
