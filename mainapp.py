@@ -72,7 +72,7 @@ def main():
                 tax=150000 + (income - 1500000) * 0.3
             return tax        
         
-        ok=st.button("Calculate Tax")
+        ok=st.button("**Calculate Tax**")
         if ok:    
             deduction=(ded_1+ded_2+ded_3)
             if deduction == "":
