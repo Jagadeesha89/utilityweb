@@ -149,7 +149,7 @@ def main():
             Tenor = int(Tenor)
     
     
-        genrate=st.button("Genrate Repayment Schedule")
+        genrate=st.button("**Genrate Repayment Schedule**")
         if genrate:
             monthly_rate=(Interest/100)/12 
             monthly_payment=(monthly_rate*Loan)/(1-(1 + monthly_rate)**(-Tenor))
