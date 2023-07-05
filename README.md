@@ -27,7 +27,8 @@ calulate the liablity of the tax under Old and New Tax Regim, it will suggest th
 
 ## Disclaimer
 >(AI Powered Chat GPT)
-The following disclaimer is from the GitHub repo from the authors of the [HugChat](https://github.com/Soulter/hugging-chat-api) port.
+>
+>The following disclaimer is from the GitHub repo from the authors of the [HugChat](https://github.com/Soulter/hugging-chat-api) port.
 > When you use this project, it means that you have agreed to the following two requirements of the HuggingChat:
 >
 > AI is an area of active research with known problems such as biased generation and misinformation. Do not use this application for high-stakes decisions or advice. Your conversations will be shared with model authors.
