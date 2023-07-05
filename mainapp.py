@@ -8,7 +8,7 @@ from hugchat_api import HuggingChat
 import os
 
 
-ti=st.title("Welcome to AI Utility Services 📇")
+ti=st.title("AI Utility Services 📇")
 st.write('Developed By [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
 page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
