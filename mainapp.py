@@ -265,11 +265,9 @@ def main():
     else:
         chatbot()
         
+    st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')   
   
 if __name__=='__main__':
     main()
 
-
-
-st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
            
