@@ -268,5 +268,8 @@ def main():
   
 if __name__=='__main__':
     main()
-    
+
+
+add_vertical_space(5)
+    st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
            
