@@ -9,6 +9,7 @@ import os
 
 
 ti=st.title("Welcome to AI Utility Services 📇")
+st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
 page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
 
@@ -263,9 +264,7 @@ def main():
     elif page == "Tax Calculator":
         tax_cal()
     else:
-        chatbot()
-        
-    st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')   
+        chatbot()   
   
 if __name__=='__main__':
     main()
