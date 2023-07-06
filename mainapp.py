@@ -206,9 +206,6 @@ def main():
         sign=HUG.getSign(EMAIL,PASSWD)
         try:
             cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
-        except HUG.AuthenticationError as e:
-            st.error(f"Authentication error: {str(e)}")
-            st.stop()
         except Exception as e:
             st.error(f"An error occurred during login: {str(e)}")
             st.stop()
