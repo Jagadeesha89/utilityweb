@@ -10,7 +10,7 @@ import os
 
 ti=st.title("AI Utility Services 📇")
 st.write('Developed By [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
-page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","Data Profiling","EMI Calculator","Tax Calculator"))
+page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
 
 
 def main():
