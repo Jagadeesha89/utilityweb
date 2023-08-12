@@ -6,11 +6,12 @@ from hugchat.login import Login
 from time import sleep
 from hugchat_api import HuggingChat
 import os
+from ydata_profiling import ProfileReport
 
 
 ti=st.title("AI Utility Services 📇")
 st.write('Developed By [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
-page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","EMI Calculator","Tax Calculator"))
+page=st.selectbox("List of Services",("Select","AI Powered Chat GPT","Data Profiling","EMI Calculator","Tax Calculator"))
 
 
 def main():
@@ -265,12 +266,39 @@ def main():
                         st.error(f"An error occurred during response generation: {str(e)}")
                         # Update the chat history with the error message
                         st.session_state.messages.append({"role": "assistant", "content": f"An error occurred: {str(e)}"})
-                 
+#y_data_profiling
+    def dataprofiling():
+        data = st.file_uploader("Choose File only csv/excel")
+
+        if data is not None:
+            file_extension = data.name.split(".")[-1].lower()
+
+            if file_extension == "csv":
+                data1 = pd.read_csv(data)
+            elif file_extension in ["xls","xlsx"]:
+                data1 = pd.read_excel(data)
+            else:
+                st.write("Error:Unsupported file format")
+                data1=None
+        
+            if data1 is not None and not data1.empty:
+                ok = st.button("Generate Report")
+        
+                if ok:
+                    profile = ProfileReport(data1, title="Pandas Profiling Report")
+                    with st.spinner("Generating Report....\nplease wait...."):
+                        st.write("## Report")
+                        st.components.v1.html(profile.to_html(), width=1000, height=1200, scrolling=True)    
+            else:
+                st.write("Please upload excel or CSV format file")
+    
                           
     if page == "Select":
         st.write("Please select the services")
     elif page == "EMI Calculator":
         loan_repay()
+    elif page == "Data Profiling":
+        dataprofiling()
     elif page == "Tax Calculator":
         tax_cal()
     else:
