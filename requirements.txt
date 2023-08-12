@@ -6,3 +6,6 @@ streamlit-extras>=0.0.1
 hugchat-api
 pyngrok>=5.0.0
 transformers>=4.11.0
+ydata_profiling
+pandas_profiling
+openpyxl
