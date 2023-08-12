@@ -6,7 +6,6 @@ from hugchat.login import Login
 from time import sleep
 from hugchat_api import HuggingChat
 import os
-from ydata_profiling import ProfileReport
 
 
 ti=st.title("AI Utility Services 📇")
