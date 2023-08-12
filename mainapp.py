@@ -268,6 +268,7 @@ def main():
                         st.session_state.messages.append({"role": "assistant", "content": f"An error occurred: {str(e)}"})
 #y_data_profiling
     def dataprofiling():
+        st.title("Welcome Data Profiling")
         data = st.file_uploader("Choose File only csv/excel")
 
         if data is not None:
