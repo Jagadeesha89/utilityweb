@@ -208,11 +208,11 @@ def main():
 
         
         try:
-            cookies=sign.loadCookiesFromDir(cookie_path_dir)
+            cookie=sign.loadCookiesFromDir(cookie_path_dir)
         except Exception as e:
             st.error(f"An error occurred during login: {str(e)}")
             st.stop()
-        cookies=sign.loadCookiesFromDir(cookie_dir_path=cookie_path_dir)
+        cookie=sign.loadCookiesFromDir(cookie_dir_path=cookie_path_dir)
         
         # Initialize chat history
         if "messages" not in st.session_state:
