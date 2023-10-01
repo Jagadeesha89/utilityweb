@@ -199,17 +199,20 @@ def main():
             
         EMAIL = st.secrets["DB_EMAIL"]
         PASSWD = st.secrets["DB_PASS"]
-        COOKIE_STORE_PATH = "./usercookies"
+        
+        sign = Login(EMAIL,PASSWD)
+        cookies = sign.login()
+        
+        cookie_path_dir = "./cookies_snapshot"
+        sign.saveCookiesToDir(cookie_path_dir)
 
-        HUG= HuggingChat(max_thread=1)
-
-        sign=HUG.getSign(EMAIL,PASSWD)
+        
         try:
-            cookies=sign.login(save=True,cookie_dir_path=COOKIE_STORE_PATH)
+            cookies=sign.loadCookiesFromDir(cookie_path_dir)
         except Exception as e:
             st.error(f"An error occurred during login: {str(e)}")
             st.stop()
-        cookies=sign.loadCookiesFromDir(cookie_dir_path=COOKIE_STORE_PATH)
+        cookies=sign.loadCookiesFromDir(cookie_dir_path=cookie_path_dir)
         
         # Initialize chat history
         if "messages" not in st.session_state:
