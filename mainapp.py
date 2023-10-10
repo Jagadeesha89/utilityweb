@@ -203,16 +203,18 @@ def main():
         sign = Login(EMAIL,PASSWD)
         cookies = sign.login()
         
+        # Save cookies to the local directory
         cookie_path_dir = "./cookies_snapshot"
         sign.saveCookiesToDir(cookie_path_dir)
 
         
         try:
-            cookie=sign.loadCookiesFromDir(cookie_path_dir)
+            sign = Login(EMAIL,PASSWD)
+            cookies = sign.loadCookiesFromDir(cookie_path_dir)
         except Exception as e:
             st.error(f"An error occurred during login: {str(e)}")
             st.stop()
-        cookie=sign.loadCookiesFromDir(cookie_dir_path=cookie_path_dir)
+    
         
         # Initialize chat history
         if "messages" not in st.session_state:
